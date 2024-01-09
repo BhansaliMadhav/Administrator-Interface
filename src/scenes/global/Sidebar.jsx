@@ -16,7 +16,8 @@ import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutl
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
-
+import gsap from "gsap/gsap-core";
+import { useGSAP } from "@gsap/react";
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -26,6 +27,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
       style={{ color: colors.grey[100] }}
       onClick={() => setSelected(title)}
       icon={icon}
+      className="headings"
     >
       <Typography>{title}</Typography>
       <Link to={to} />
@@ -37,7 +39,36 @@ const Sidebar = () => {
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
+  useGSAP(() => {
+    gsap.fromTo(
+      ".my-sidebar",
+      { x: "-100%", opacity: 0 },
+      { x: "0", opacity: 1, duration: 1, stagger: 0.001 }
+    );
 
+    gsap.fromTo(
+      ".menu-icon",
+      { opacity: 0, y: "-40px" },
+      { opacity: 1, y: 0, duration: 1, stagger: 0.001, delay: 1 }
+    );
+    gsap.fromTo(
+      ".name",
+      { opacity: 0, y: "-100px" },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 2,
+        ease: "expo",
+        stagger: 0.001,
+        delay: "1",
+      }
+    );
+    gsap.fromTo(
+      ".headings",
+      { x: "-100%" },
+      { x: 0, duration: 1, stagger: 0.1, delay: 1.2, ease: "expo" }
+    );
+  });
   return (
     <Box
       sx={{
@@ -57,11 +88,13 @@ const Sidebar = () => {
           color: `#6870fa !important`,
         },
       }}
+      className={"my-sidebar"}
     >
       <ProSidebar collapsed={isCollapsed}>
         <Menu iconShape="square">
           {/* Logo and menu icon */}
           <MenuItem
+            class="menu-icon"
             onClick={() => setIsCollapsed(!isCollapsed)}
             icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
             style={{
@@ -76,7 +109,11 @@ const Sidebar = () => {
                 alignItems={"center"}
                 ml={"15px"}
               >
-                <Typography variant="h4" color={colors.grey[100]}>
+                <Typography
+                  variant="h4"
+                  color={colors.grey[100]}
+                  className="admin-text"
+                >
                   ADMINS
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
@@ -87,11 +124,12 @@ const Sidebar = () => {
           </MenuItem>
           {/* USER */}
           {!isCollapsed && (
-            <Box mb={"25px"}>
+            <Box mb={"25px"} className="name">
               <Box
                 display={"flex"}
                 justifyContent={"center"}
                 alignItems={"center"}
+                className={"user"}
               >
                 <img
                   alt="profile-user"
@@ -120,7 +158,10 @@ const Sidebar = () => {
             </Box>
           )}
           {/* Menu Items */}
-          <Box paddingLeft={isCollapsed ? undefined : "10%"}>
+          <Box
+            paddingLeft={isCollapsed ? undefined : "10%"}
+            className="headings"
+          >
             <Item
               title="Dashboard"
               to="/"
@@ -132,6 +173,7 @@ const Sidebar = () => {
               variant="h6"
               color={colors.grey[300]}
               sx={{ m: "15px 0 5px 20px " }}
+              className="headings"
             >
               Data
             </Typography>
@@ -160,6 +202,7 @@ const Sidebar = () => {
               variant="h6"
               color={colors.grey[300]}
               sx={{ m: "15px 0 5px 20px " }}
+              className="headings"
             >
               Pages
             </Typography>
@@ -185,6 +228,7 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
             <Typography
+              className="headings"
               variant="h6"
               color={colors.grey[300]}
               sx={{ m: "15px 0 5px 20px " }}

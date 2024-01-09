@@ -8,14 +8,12 @@ import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined
 import SettingsOutlined from "@mui/icons-material/SettingsOutlined";
 import PersonOutlined from "@mui/icons-material/PersonOutlined";
 import SearchIcon from "@mui/icons-material/Search";
-
-
 const Topbar = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const colorMode = useContext(ColorModeContext);
 
-    return <Box display={"flex"} justifyContent={"space-between"} p={2}>
+    return <Box display={"flex"} justifyContent={"space-between"} p={2} >
         {/* Search bar */}
         <Box display="flex"
              backgroundColor={colors.primary[400]}

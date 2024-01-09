@@ -2,6 +2,7 @@ import Header from "../../components/Header";
 import { Box, Button, IconButton, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
 import { mockTransactions } from "../../data/mockData";
+import { useGSAP } from "@gsap/react";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import EmailIcon from "@mui/icons-material/Email";
 import PointOfSaleIcon from "@mui/icons-material/PointOfSale";
@@ -12,10 +13,17 @@ import BarChart from "../../components/BarChart";
 import GeographyChart from "../../components/GeographyChart";
 import StatBox from "../../components/StatBox";
 import ProgressCircle from "../../components/ProgressCircle";
-
+import gsap from "gsap/gsap-core";
 const Dashboard = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  useGSAP(() => {
+    gsap.fromTo(
+      ".header",
+      { y: "5rem", opacity: 0 },
+      { y: "0%", opacity: 1, duration: 1.25, stagger: 0.001 }
+    );
+  });
   return (
     <Box m={"20px"}>
       <Box
