@@ -43,7 +43,7 @@ const Sidebar = () => {
     gsap.fromTo(
       ".my-sidebar",
       { x: "-100%", opacity: 0 },
-      { x: "0", opacity: 1, duration: 1, stagger: 0.001 }
+      { x: "0", opacity: 1, duration: 2.25, stagger: 0.001 }
     );
 
     gsap.fromTo(

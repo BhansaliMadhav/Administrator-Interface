@@ -1,10 +1,17 @@
 import { Typography, Box, useTheme, colors } from "@mui/material";
 import { tokens } from "../theme";
-
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap/gsap-core";
 const Header = ({ title, subTitle }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-
+  useGSAP(() => {
+    gsap.fromTo(
+      ".header",
+      { y: "5rem", opacity: 0 },
+      { y: "0%", opacity: 1, duration: 1, stagger: 0.001, delay: 2 }
+    );
+  });
   return (
     <Box mb={"30px"} class={"header"}>
       <Typography

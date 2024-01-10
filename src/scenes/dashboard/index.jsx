@@ -17,13 +17,7 @@ import gsap from "gsap/gsap-core";
 const Dashboard = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  useGSAP(() => {
-    gsap.fromTo(
-      ".header",
-      { y: "5rem", opacity: 0 },
-      { y: "0%", opacity: 1, duration: 1.25, stagger: 0.001 }
-    );
-  });
+
   return (
     <Box m={"20px"}>
       <Box
