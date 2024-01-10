@@ -10,7 +10,7 @@ const StatBox = ({ title, subtitle, icon, progress, increase }) => {
     gsap.fromTo(
       ".inner-box",
       { x: "-50px", opacity: 0 },
-      { x: 0, opacity: 1, duration: 1, delay: 4 }
+      { x: 0, opacity: 1, duration: 0.5, delay: 1.5, stagger: 0.25 }
     );
   });
   return (

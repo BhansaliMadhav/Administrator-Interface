@@ -21,12 +21,12 @@ const Dashboard = () => {
     gsap.fromTo(
       ".download-button",
       { x: "200px", opacity: 0 },
-      { x: 0, opacity: 1, duration: 1, delay: 2 }
+      { x: 0, opacity: 1, duration: 0.5, delay: 0.5 }
     );
     gsap.fromTo(
       ".outer-box",
       { y: "200px", opacity: 0 },
-      { y: 0, opacity: 1, duration: 1, delay: 3 }
+      { y: 0, opacity: 1, duration: 0.5, delay: 1, stagger: 0.25 }
     );
   });
   return (

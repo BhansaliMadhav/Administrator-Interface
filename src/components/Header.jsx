@@ -9,7 +9,7 @@ const Header = ({ title, subTitle }) => {
     gsap.fromTo(
       ".header",
       { y: "5rem", opacity: 0 },
-      { y: "0%", opacity: 1, duration: 1, stagger: 0.001, delay: 2 }
+      { y: "0%", opacity: 1, duration: 1, stagger: 0.001 }
     );
   });
   return (

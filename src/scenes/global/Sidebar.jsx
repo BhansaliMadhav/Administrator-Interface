@@ -40,35 +40,47 @@ const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
   useGSAP(() => {
-    gsap.fromTo(
-      ".my-sidebar",
-      { x: "-100%", opacity: 0 },
-      { x: "0", opacity: 1, duration: 2.25, stagger: 0.001 }
-    );
+    if (!isCollapsed) {
+      gsap.fromTo(
+        ".my-sidebar",
+        { x: "-100%", opacity: 0 },
+        { x: "0", opacity: 1, duration: 2.25, stagger: 0.001 }
+      );
 
-    gsap.fromTo(
-      ".menu-icon",
-      { opacity: 0, y: "-40px" },
-      { opacity: 1, y: 0, duration: 1, stagger: 0.001, delay: 1 }
-    );
-    gsap.fromTo(
-      ".name",
-      { opacity: 0, y: "-100px" },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 2,
-        ease: "expo",
-        stagger: 0.001,
-        delay: "1",
-      }
-    );
-    gsap.fromTo(
-      ".headings",
-      { x: "-100%" },
-      { x: 0, duration: 1, stagger: 0.1, delay: 1.2, ease: "expo" }
-    );
-  });
+      gsap.fromTo(
+        ".menu-icon",
+        { opacity: 0, y: "-40px" },
+        { opacity: 1, y: 0, duration: 1, stagger: 0.001, delay: 1 }
+      );
+      gsap.fromTo(
+        ".name",
+        { opacity: 0, y: "-100px" },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 2,
+          ease: "expo",
+          stagger: 0.001,
+          delay: "1",
+        }
+      );
+      gsap.fromTo(
+        ".headings",
+        { x: "-100%" },
+        { x: 0, duration: 1, stagger: 0.1, delay: 1.2, ease: "expo" }
+      );
+    }
+  }, [isCollapsed]);
+  useGSAP(() => {
+    if (isCollapsed) {
+      gsap.fromTo(
+        ".headings",
+        { x: "70px" },
+        { x: 0, duration: 1, stagger: 0.1, ease: "expo" }
+      );
+    }
+  }, [isCollapsed]);
+
   return (
     <Box
       sx={{

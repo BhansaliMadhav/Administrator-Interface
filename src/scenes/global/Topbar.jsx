@@ -18,12 +18,12 @@ const Topbar = () => {
     gsap.fromTo(
       ".Search-box",
       { x: "-200px", opacity: 0 },
-      { x: "0px", opacity: 1, duration: 1, delay: 2 }
+      { x: "0px", opacity: 1, duration: 1 }
     );
     gsap.fromTo(
       ".icon-box",
       { x: "200px", opacity: 0 },
-      { x: 0, opacity: 1, duration: 1, delay: 2 }
+      { x: 0, opacity: 1, duration: 1 }
     );
   });
   return (
