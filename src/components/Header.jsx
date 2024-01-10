@@ -1,4 +1,4 @@
-import { Typography, Box, useTheme, colors } from "@mui/material";
+import { Typography, Box, useTheme } from "@mui/material";
 import { tokens } from "../theme";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap/gsap-core";

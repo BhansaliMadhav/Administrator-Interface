@@ -2,7 +2,6 @@ import Header from "../../components/Header";
 import { Box, Button, IconButton, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
 import { mockTransactions } from "../../data/mockData";
-import { useGSAP } from "@gsap/react";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import EmailIcon from "@mui/icons-material/Email";
 import PointOfSaleIcon from "@mui/icons-material/PointOfSale";
@@ -13,11 +12,23 @@ import BarChart from "../../components/BarChart";
 import GeographyChart from "../../components/GeographyChart";
 import StatBox from "../../components/StatBox";
 import ProgressCircle from "../../components/ProgressCircle";
+import { useGSAP } from "@gsap/react";
 import gsap from "gsap/gsap-core";
 const Dashboard = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-
+  useGSAP(() => {
+    gsap.fromTo(
+      ".download-button",
+      { x: "200px", opacity: 0 },
+      { x: 0, opacity: 1, duration: 1, delay: 2 }
+    );
+    gsap.fromTo(
+      ".outer-box",
+      { y: "200px", opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, delay: 3 }
+    );
+  });
   return (
     <Box m={"20px"}>
       <Box
@@ -40,6 +51,7 @@ const Dashboard = () => {
               fontWeight: "bold",
               Padding: "10px 20px",
             }}
+            className="download-button"
           >
             <DownloadOutlinedIcon sx={{ mr: "10px" }} />
             Download Reports
@@ -61,6 +73,7 @@ const Dashboard = () => {
           display={"flex"}
           alignItems={"center"}
           justifyContent={"center"}
+          className="outer-box"
         >
           <StatBox
             title={"12,361"}
@@ -80,6 +93,7 @@ const Dashboard = () => {
           display={"flex"}
           alignItems={"center"}
           justifyContent={"center"}
+          className="outer-box"
         >
           <StatBox
             title={"431,225"}
@@ -99,6 +113,7 @@ const Dashboard = () => {
           display={"flex"}
           alignItems={"center"}
           justifyContent={"center"}
+          className="outer-box"
         >
           <StatBox
             title={"32,441"}
@@ -118,6 +133,7 @@ const Dashboard = () => {
           display={"flex"}
           alignItems={"center"}
           justifyContent={"center"}
+          className="outer-box"
         >
           <StatBox
             title={"1,325,134"}

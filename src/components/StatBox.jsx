@@ -1,13 +1,20 @@
 import { Box, Typography, useTheme } from "@mui/material";
 import { tokens } from "../theme";
 import ProgressCircle from "./ProgressCircle";
-
+import gsap from "gsap/gsap-core";
+import { useGSAP } from "@gsap/react";
 const StatBox = ({ title, subtitle, icon, progress, increase }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-
+  useGSAP(() => {
+    gsap.fromTo(
+      ".inner-box",
+      { x: "-50px", opacity: 0 },
+      { x: 0, opacity: 1, duration: 1, delay: 4 }
+    );
+  });
   return (
-    <Box width="100%" m="0 30px">
+    <Box width="100%" m="0 30px" className="inner-box">
       <Box display="flex" justifyContent="space-between">
         <Box>
           {icon}
