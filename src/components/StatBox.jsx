@@ -1,13 +1,16 @@
 import { Box, Typography, useTheme } from "@mui/material";
 import { tokens } from "../theme";
 import ProgressCircle from "./ProgressCircle";
+import { useEffect } from "react";
 import gsap from "gsap/gsap-core";
 import { useGSAP } from "@gsap/react";
 const StatBox = ({ title, subtitle, icon, progress, increase }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const tl1 = gsap.timeline();
+
   useGSAP(() => {
-    gsap.fromTo(
+    tl1.fromTo(
       ".inner-box",
       { x: "-50px", opacity: 0 },
       { x: 0, opacity: 1, duration: 0.5, delay: 1.5, stagger: 0.25 }

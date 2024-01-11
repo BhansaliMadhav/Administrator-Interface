@@ -17,16 +17,17 @@ import gsap from "gsap/gsap-core";
 const Dashboard = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const tl1 = gsap.timeline();
   useGSAP(() => {
-    gsap.fromTo(
+    tl1.fromTo(
       ".download-button",
       { x: "200px", opacity: 0 },
       { x: 0, opacity: 1, duration: 0.5, delay: 0.5 }
     );
-    gsap.fromTo(
+    tl1.fromTo(
       ".outer-box",
       { y: "200px", opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.5, delay: 1, stagger: 0.25 }
+      { y: 0, opacity: 1, duration: 0.5, stagger: 0.25 }
     );
   });
   return (

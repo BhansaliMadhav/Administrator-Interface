@@ -44,13 +44,13 @@ const Sidebar = () => {
       gsap.fromTo(
         ".my-sidebar",
         { x: "-100%", opacity: 0 },
-        { x: "0", opacity: 1, duration: 2.25, stagger: 0.001 }
+        { x: "0", opacity: 1, duration: 1.25, stagger: 0.001 }
       );
 
       gsap.fromTo(
         ".menu-icon",
         { opacity: 0, y: "-40px" },
-        { opacity: 1, y: 0, duration: 1, stagger: 0.001, delay: 1 }
+        { opacity: 1, y: 0, duration: 1, stagger: 0.001, delay: 0.5 }
       );
       gsap.fromTo(
         ".name",
@@ -58,7 +58,7 @@ const Sidebar = () => {
         {
           opacity: 1,
           y: 0,
-          duration: 2,
+          duration: 1,
           ease: "expo",
           stagger: 0.001,
           delay: "1",
