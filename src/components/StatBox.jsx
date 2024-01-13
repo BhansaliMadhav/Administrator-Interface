@@ -1,7 +1,6 @@
 import { Box, Typography, useTheme } from "@mui/material";
 import { tokens } from "../theme";
 import ProgressCircle from "./ProgressCircle";
-import { useEffect } from "react";
 import gsap from "gsap/gsap-core";
 import { useGSAP } from "@gsap/react";
 const StatBox = ({ title, subtitle, icon, progress, increase }) => {
